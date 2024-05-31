@@ -12,7 +12,7 @@ export const getDudeStore = defineStore('dude', () => {
   // fighter
   const dudes: Ref<Record<number, Dude>> = ref(defaultDudes)
 
-  watch(() => JSON.stringify(dudes.value), (newValue, oldValue) => setCookie(dudes.value))
+  watch(() => JSON.stringify(dudes.value), () => setCookie(dudes.value))
 
   // creates a blank new fighter and returns its ID
   function addBlank (): number {

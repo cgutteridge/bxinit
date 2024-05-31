@@ -50,7 +50,7 @@ onMounted(() => {
   <div class="bottom">
     <table class="table">
       <dude-row v-for="dudeInRound in getRoundStore().all()" v-bind:dude-in-round="dudeInRound"
-                v-bind:key="dudeInRound" v-on:remove-dude="remove($event)"></dude-row>
+                v-bind:key="dudeInRound.dude.id" v-on:remove-dude="remove($event)"></dude-row>
     </table>
   </div>
 </template>

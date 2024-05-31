@@ -26,11 +26,13 @@ const dude = computed(() => dudeStore.get(props.id))
 
 .input .not-hover {
   border: solid 1px transparent;
+  width: 3em;
 }
 
 .input .hover {
   border: solid 1px black;
   display: none;
+  width: 3em;
 }
 
 .input:hover .hover {

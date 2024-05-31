@@ -6,7 +6,7 @@ export function setCookie (value: object) {
   date.setTime(date.getTime() + (days * 24 * 60 * 60 * 1000))
   const expires = 'expires=' + date.toUTCString()
   const jsonValue = JSON.stringify(value)
-  document.cookie = `${name}=${jsonValue};${expires};path=/`
+  document.cookie = `${name}=${jsonValue};${expires};path=/;SameSite=Strict`
 }
 
 export function getCookie (): object | null {

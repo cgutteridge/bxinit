@@ -19,10 +19,12 @@ const dude = computed(() => dudeStore.get(props.id))
 <style scoped>
 .input .not-hover {
   border: solid 1px transparent;
+  width: 3em;
 }
 
 .input .hover {
   border: solid 1px black;
+  width: 3em;
   display: none;
 }
 
