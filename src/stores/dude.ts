@@ -12,7 +12,18 @@ export const getDudeStore = defineStore('dude', () => {
   // fighter
   const dudes: Ref<Record<number, Dude>> = ref(defaultDudes)
 
-  watch(() => JSON.stringify(dudes.value), () => setCookie(dudes.value))
+  watch(() => JSON.stringify(dudes.value), () => {
+    setCookie(dudes.value)
+    // calculate NextId
+    const allDudes = all()
+    if (allDudes.length === 0) {
+      nextId = 1
+    } else {
+      nextId = allDudes.reduce(
+        (max, dude) => (dude.id > max ? dude.id : max),
+        allDudes[0].id) + 1
+    }
+  })
 
   // creates a blank new fighter and returns its ID
   function addBlank (): number {
