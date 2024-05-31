@@ -23,7 +23,7 @@ export const getRoundStore = defineStore('round', () => {
       let init = roll
       if (init !== undefined) { init += dude.initModifier }
       return { dude, init, roll }
-    }).sort((a, b) =>  b.init - a.init)
+    }).sort((a, b) =>  (b.init??0) - (a.init??0))
   }
 
   return { roll, all }

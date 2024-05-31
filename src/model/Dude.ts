@@ -3,4 +3,5 @@ export interface Dude {
   name: string
   initModifier: number
   ac?: number
+  friendly: boolean
 }
