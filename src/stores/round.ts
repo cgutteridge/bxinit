@@ -18,12 +18,19 @@ export const getRoundStore = defineStore('round', () => {
 
   // returns everyone in the round, sorted by roll
   function all (): DudeInRound[] {
-    return dudeStore.all().map((dude): DudeInRound => {
+    const dudesInRounds : DudeInRound[] = dudeStore.all().map((dude): DudeInRound => {
       const roll: number | undefined = initRolls.value[dude.id]
       let init = roll
       if (init !== undefined) { init += dude.initModifier }
-      return { dude, init, roll }
+      return { dude, init, roll, firstInGroup: false, lastInGroup: false }
     }).sort((a, b) =>  (b.init??0) - (a.init??0))
+    dudesInRounds.forEach( (dudeInRound: DudeInRound, index )=>{
+      if( index<dudesInRounds.length-1 && dudesInRounds[index+1].init != dudeInRound.init ) {
+        dudeInRound.lastInGroup=true
+        dudesInRounds[index+1].firstInGroup = true
+      }
+    })
+    return dudesInRounds
   }
 
   return { roll, all }

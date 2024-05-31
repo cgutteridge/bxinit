@@ -27,12 +27,12 @@ export const getDudeStore = defineStore('dude', () => {
 
   // creates a blank new fighter and returns its ID
   function addBlank (): number {
-    return add('', undefined, 0, true)
+    return add('', undefined, 0, true, true)
   }
 
-  function add (name: string, ac: number | undefined, initModifier: number, friendly: boolean) {
+  function add (name: string, ac: number | undefined, initModifier: number, friendly: boolean, autoRoll: boolean) {
     const id = nextId++
-    dudes.value[id] = { id, name, ac, initModifier, friendly }
+    dudes.value[id] = { id, name, ac, initModifier, friendly, autoRoll }
     return id
   }
 

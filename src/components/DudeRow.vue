@@ -10,7 +10,7 @@ defineEmits(['remove-dude'])
 </script>
 
 <template>
-  <tr>
+  <tr v-bind:class="dudeInRound.lastInGroup?'last-in-group':''">
     <td style="text-align: right; min-width: 3em">{{ dudeInRound.init }}</td>
     <td>
       <DudeFriend v-bind:id="dudeInRound.dude.id"></DudeFriend>
@@ -50,11 +50,15 @@ tr:hover .remove {
 }
 
 tr td {
-  border-bottom: solid 1px #c0c0c0;
-  padding-right: 1em;
+  border-bottom: dashed 2px #c0c0c0;
+  padding-right: 2em;
+  padding-bottom: 3px;
 }
-
+tr.last-in-group td {
+  border-bottom: solid 2px #303030;
+}
 tr:first-child td {
   border-top: solid 1px #c0c0c0;
 }
+
 </style>

@@ -4,4 +4,5 @@ export interface Dude {
   initModifier: number
   ac?: number
   friendly: boolean
+  autoRoll: boolean
 }

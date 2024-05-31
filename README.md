@@ -3,6 +3,12 @@
 
 This is a vue3 app to run D6 based D&D initiative tracking.
 
+## Ideas
+
+- Dark mode toggle
+- d20 mode toggle
+- distinguish between initiative number groups
+
 ## Recommended IDE Setup
 
 [VSCode](https://code.visualstudio.com/) + [Volar](https://marketplace.visualstudio.com/items?itemName=Vue.volar) (and disable Vetur).
