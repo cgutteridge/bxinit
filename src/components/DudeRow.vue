@@ -4,6 +4,8 @@ import DudeName from '@/components/DudeName.vue'
 import DudeAc from '@/components/DudeAc.vue'
 import DudeMod from '@/components/DudeMod.vue'
 import DudeFriend from '@/components/DudeFriend.vue'
+import DudeAuto from '@/components/DudeAuto.vue'
+import DudeRoll from '@/components/DudeRoll.vue'
 
 defineProps(['dudeInRound'])
 defineEmits(['remove-dude'])
@@ -19,12 +21,14 @@ defineEmits(['remove-dude'])
       <DudeName v-bind:id="dudeInRound.dude.id"></DudeName>
     </td>
     <td>
-      <DiceFace v-bind:side="dudeInRound.roll"></DiceFace>
+      <DudeAuto v-bind:id="dudeInRound.dude.id"></DudeAuto>
+    </td>
+    <td>
+      <DudeRoll v-bind:id="dudeInRound.dude.id"></DudeRoll>
     </td>
     <td>
       <DudeMod v-bind:id="dudeInRound.dude.id"></DudeMod>
     </td>
-
     <td>
       <DudeAc v-bind:id="dudeInRound.dude.id"></DudeAc>
     </td>
@@ -54,9 +58,11 @@ tr td {
   padding-right: 2em;
   padding-bottom: 3px;
 }
+
 tr.last-in-group td {
   border-bottom: solid 2px #303030;
 }
+
 tr:first-child td {
   border-top: solid 1px #c0c0c0;
 }
