@@ -1,7 +1,8 @@
 import type { Ref } from 'vue'
-import { ref } from 'vue'
+import { ref, watch } from 'vue'
 import { defineStore } from 'pinia'
 import type { Dude } from '@/model/Dude'
+import { setCookie } from '@/cookies'
 
 export const getDudeStore = defineStore('dude', () => {
 
@@ -11,14 +12,16 @@ export const getDudeStore = defineStore('dude', () => {
   // fighter
   const dudes: Ref<Record<number, Dude>> = ref(defaultDudes)
 
+  watch(() => JSON.stringify(dudes.value), (newValue, oldValue) => setCookie(dudes.value))
+
   // creates a blank new fighter and returns its ID
   function addBlank (): number {
     return add('', undefined, 0, true)
   }
 
-  function add( name:string, ac:number|undefined, initModifier:number, friendly:boolean) {
+  function add (name: string, ac: number | undefined, initModifier: number, friendly: boolean) {
     const id = nextId++
-    dudes.value[id] = {id,name,ac,initModifier,friendly}
+    dudes.value[id] = { id, name, ac, initModifier, friendly }
     return id
   }
 

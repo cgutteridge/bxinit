@@ -1,8 +1,15 @@
 import { getDudeStore } from '@/stores/dude'
+import { getCookie } from '@/cookies'
+import type { Dude } from '@/model/Dude'
 
 export default function initialiseStores (): void {
   const dudeStore = getDudeStore()
-  dudeStore.add('Bruh',15,0,true)
-  dudeStore.add('Tufty',10,1,true)
-  dudeStore.add('Enemies',12,-2,false)
+  const fromCookie: object | null = getCookie()
+  if (fromCookie !== null) {
+    dudeStore.dudes = fromCookie as Record<number,Dude>
+  } else {
+    dudeStore.add('Bruh', 15, 0, true)
+    dudeStore.add('Tufty', 10, 1, true)
+    dudeStore.add('Enemies', 12, -2, false)
+  }
 }

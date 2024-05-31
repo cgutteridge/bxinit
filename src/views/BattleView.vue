@@ -44,8 +44,8 @@ onMounted(() => {
 
 <template>
   <div class="top">
-    <button class='b1' @click="roll()">Roll Initiative</button>
-    <button class='b2' @click="add()">Add Combatant</button>
+    <button class='b1' @click="roll()">🎲&nbsp;&nbsp;Roll Initiative</button>
+    <button class='b2' @click="add()">✚&nbsp;&nbsp;Add Combatant</button>
   </div>
   <div class="bottom">
     <table class="table">
@@ -66,13 +66,13 @@ onMounted(() => {
 
 .b1 {
   position: absolute;
-  top: 1vh;
+  top: 3vh;
   left: 5vw;
 }
 
 .b2 {
   position: absolute;
-  top: 1vh;
+  top: 3vh;
   right: 5vw;
 }
 .bottom {

@@ -1,15 +1,7 @@
 # bxinit
 
-## TODO
 
-- autoscale
-- remove item
-- pretty ac
-- ac alter
-- row highlights
-- cookies
-
-This template should help get you started developing with Vue 3 in Vite.
+This is a vue3 app to run D6 based D&D initiative tracking.
 
 ## Recommended IDE Setup
 

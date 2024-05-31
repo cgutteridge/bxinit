@@ -19,7 +19,7 @@ const props = defineProps(['dudeInRound'])
     <td><DudeMod v-bind:id="dudeInRound.dude.id"></DudeMod></td>
 
     <td><DudeAc v-bind:id="dudeInRound.dude.id"></DudeAc></td>
-    <td><div class="remove" @click="$emit('remove-dude',dudeInRound.dude.id)">[x]</div></td>
+    <td><div class="remove" @click="$emit('remove-dude',dudeInRound.dude.id)">❌</div></td>
   </tr>
 </template>
 
