@@ -12,7 +12,6 @@ export const getOptionStore = defineStore('option', () => {
   const darkMode: Ref<boolean> = ref(false)
 
   watch(() => diceSize.value, () => {
-    console.log(23)
     setCookie(getState())
   })
 

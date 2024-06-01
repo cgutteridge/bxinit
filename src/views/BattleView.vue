@@ -25,10 +25,12 @@ function roll () {
 
 function removeFriendlies() {
   getDudeStore().removeFriendlies()
+  reScale()
 }
 
 function removeHostiles() {
   getDudeStore().removeHostiles()
+  reScale()
 }
 
 async function reScale () {
@@ -39,8 +41,7 @@ async function reScale () {
   const targetW: number = (container.width() ?? 0) * 0.95
   const h: number = scaledThing.height() ?? 0
   const w: number = scaledThing.width() ?? 0
-  const scale = Math.min(targetH / h, targetW / w)
-
+  const scale = Math.min(targetH / (h+1), targetW / (w+1))
   scaledThing.css('transform', `translateY(${(targetH - h) / 2}px) scale(${scale}) `)
 }
 
