@@ -3,6 +3,7 @@ import { ref, watch } from 'vue'
 import { defineStore } from 'pinia'
 import type { Dude } from '@/model/Dude'
 import { setCookie } from '@/cookies'
+import { getState } from '@/state'
 
 export const getDudeStore = defineStore('dude', () => {
 
@@ -13,7 +14,7 @@ export const getDudeStore = defineStore('dude', () => {
   const dudes: Ref<Record<number, Dude>> = ref(defaultDudes)
 
   watch(() => JSON.stringify(dudes.value), () => {
-    setCookie(dudes.value)
+    setCookie(getState())
     // calculate NextId
     const allDudes = all()
     if (allDudes.length === 0) {
