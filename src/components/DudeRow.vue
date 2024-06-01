@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import DiceFace from '@/components/DiceFace.vue'
+import DiceFace from '@/components/DiceD6.vue'
 import DudeName from '@/components/DudeName.vue'
 import DudeAc from '@/components/DudeAc.vue'
 import DudeMod from '@/components/DudeMod.vue'
@@ -54,17 +54,17 @@ tr:hover .remove {
 }
 
 tr td {
-  border-bottom: dashed 2px #c0c0c0;
+  border-bottom: dashed 2px var(--color-border);
   padding-right: 2em;
   padding-bottom: 3px;
 }
 
 tr.last-in-group td {
-  border-bottom: solid 2px #303030;
+  border-bottom: solid 2px var(--color-border-hover);
 }
 
 tr:first-child td {
-  border-top: solid 1px #c0c0c0;
+  border-top: dashed 2px var(--color-border);
 }
 
 </style>

@@ -4,6 +4,9 @@ import DudeRow from '@/components/DudeRow.vue'
 import { getDudeStore } from '@/stores/dude'
 import $ from 'jquery'
 import { nextTick, onMounted } from 'vue'
+import { getOptionStore } from '@/stores/option'
+
+const optionStore = getOptionStore()
 
 function add () {
   getDudeStore().addBlank()
@@ -18,6 +21,14 @@ function remove (id: number) {
 function roll () {
   getRoundStore().roll()
   reScale()
+}
+
+function removeFriendlies() {
+  getDudeStore().removeFriendlies()
+}
+
+function removeHostiles() {
+  getDudeStore().removeHostiles()
 }
 
 async function reScale () {
@@ -44,8 +55,14 @@ onMounted(() => {
 
 <template>
   <div class="top">
-    <button class='b1' @click="roll()">🎲&nbsp;&nbsp;Roll Initiative</button>
-    <button class='b2' @click="add()">✚&nbsp;&nbsp;Add Combatant</button>
+    <button title="ROLL INITIATIVE"@click="roll()">🎲</button>
+    <button @click="add()" title="ADD COMBATANT">✚</button>
+    <button @click="removeHostiles()" title="REMOVE HOSTILES">❌⚔</button>
+    <button @click="removeFriendlies()" title="REMOVE FRIENDS">❌🛡</button>
+    <button v-if="optionStore.diceSize==20" @click="optionStore.diceSize=6" title="TOGGLE DICE SIZE">D20</button>
+    <button v-if="optionStore.diceSize==6" @click="optionStore.diceSize=20" title="TOGGLE DICE SIZE">D6</button>
+    <button v-if="optionStore.darkMode" @click="optionStore.setLight()" title="LIGHT MODE" style="background-color:#000">🌙</button>
+    <button v-if="!optionStore.darkMode" @click="optionStore.setDark()" title="DARK MODE">☀️</button>
   </div>
   <div class="bottom">
     <table class="table">
@@ -62,19 +79,9 @@ onMounted(() => {
 
 .top button {
   font-size: 4vh;
+  min-height: 2em;
 }
 
-.b1 {
-  position: absolute;
-  top: 3vh;
-  left: 5vw;
-}
-
-.b2 {
-  position: absolute;
-  top: 3vh;
-  right: 5vw;
-}
 .bottom {
   text-align: center;
   height: 90vh;

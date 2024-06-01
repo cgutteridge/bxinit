@@ -15,11 +15,15 @@ const dude = computed(() => dudeStore.get(props.id))
 </template>
 
 <style scoped>
+.input input {
+  background-color: var(--color-background);
+  color: var(--color-text)
+}
 .input .not-hover {
   border: solid 1px transparent;
 }
 .input .hover {
-  border: solid 1px black;
+  border: solid 1px var(--color-border);
   display: none;
 }
 .input:hover .hover {

@@ -1,0 +1,1 @@
+export type DiceSize = 6 | 20

@@ -5,11 +5,7 @@ This is a vue3 app to run D6 based D&D initiative tracking.
 
 ## Ideas
 
-- Dark mode toggle
-- d20 mode toggle
-- clear board button
-- clear hostiles button
-
+- add options status to cookies
 
 ## Recommended IDE Setup
 

@@ -4,15 +4,17 @@ import { defineStore } from 'pinia'
 import type { Dude } from '@/model/Dude'
 import { getDudeStore } from '@/stores/dude'
 import type { DudeInRound } from '@/model/DudeInRound'
+import { getOptionStore } from '@/stores/option'
 
 export const getRoundStore = defineStore('round', () => {
   const dudeStore = getDudeStore()
+  const optionStore = getOptionStore()
   const initRolls: Ref<Record<number, number | undefined>> = ref({})
 
   function roll () {
     initRolls.value = {}
     dudeStore.all().forEach((dude: Dude) => {
-      setRoll(dude.id, dude.autoRoll ? Math.floor(Math.random() * 6) + 1 : undefined)
+      setRoll(dude.id, dude.autoRoll ? Math.floor(Math.random() * optionStore.diceSize) + 1 : undefined)
     })
   }
 

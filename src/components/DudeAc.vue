@@ -17,14 +17,22 @@ const dude = computed(() => dudeStore.get(props.id))
 </template>
 
 <style scoped>
+.input {
+  min-width: 3em;
+  display: inline-block
+}
+.input input {
+  min-width: 3em;
+  color: var(--color-text);
+  background-color: var(--color-background);
+}
+
 .input .not-hover {
   border: solid 1px transparent;
-  width: 3em;
 }
 
 .input .hover {
-  border: solid 1px black;
-  width: 3em;
+  border: solid 1px var(--color-border);
   display: none;
 }
 

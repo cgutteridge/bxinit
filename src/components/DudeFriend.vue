@@ -19,4 +19,11 @@ const dude = computed(() => dudeStore.get(props.id))
 .emoji {
   cursor: pointer;
 }
+.dark .emoji {
+  border: solid 1px var(--color-border);
+  background-color: #666;
+  text-align: center;
+  min-width: 1.5em;
+  border-radius: 0.25em;
+}
 </style>
