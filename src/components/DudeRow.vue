@@ -45,6 +45,9 @@ defineEmits(['remove-dude'])
 td {
   text-align: left
 }
+td.icon {
+  text-align: center;
+}
 
 .remove {
   position: relative;
@@ -58,7 +61,8 @@ tr:hover .remove {
 
 tr td {
   border-bottom: dashed 2px var(--color-border);
-  padding-right: 2em;
+  padding-left: 1em;
+  padding-right: 1em;
   padding-bottom: 3px;
 }
 
@@ -77,9 +81,7 @@ tr.sleeping td {
 tr.sleeping td input {
   font-size: 100%;
 }
-td.icon {
-  text-align: center;
-}
+
 
 table tr.sleeping td {
   border-bottom: dashed 1px var(--color-border);
