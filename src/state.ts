@@ -15,7 +15,9 @@ export function getState (): State {
 export function setState (state: State) {
   const dudeStore = getDudeStore()
   const optionStore = getOptionStore()
-  dudeStore.dudes = state.dudes
+  if( state.hasOwnProperty('dudes')) {
+    dudeStore.dudes = state.dudes
+  }
   if( state.darkMode ) {
     optionStore.setDark()
   }else {

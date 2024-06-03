@@ -7,8 +7,8 @@ import { setState } from '@/state'
 export default function initialiseStores (): void {
   const optionStore = getOptionStore()
   const dudeStore = getDudeStore()
-  const fromCookie: State | null = getCookie() as State | null
-  if (fromCookie !== null) {
+  const fromCookie: State | undefined = getCookie() as State | undefined
+  if (fromCookie !== undefined) {
     setState(fromCookie)
   }
   if (dudeStore.all().length == 0) {

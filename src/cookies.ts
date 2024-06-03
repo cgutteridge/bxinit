@@ -9,7 +9,7 @@ export function setCookie (value: object) {
   document.cookie = `${name}=${jsonValue};${expires};path=/;SameSite=Strict`
 }
 
-export function getCookie (): object | null {
+export function getCookie (): object | undefined {
   const nameEQ = name + '='
   const ca = document.cookie.split(';')
   for (let i = 0; i < ca.length; i++) {
@@ -20,5 +20,5 @@ export function getCookie (): object | null {
       return JSON.parse(jsonValue)
     }
   }
-  return null
+  return undefined
 }
