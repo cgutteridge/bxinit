@@ -135,7 +135,7 @@ onMounted(() => {
 .table {
   display: inline-block;
   border-collapse: collapse;
-  transition: transform 0.2s;
+  transition: transform 0.5s;
 }
 
 
