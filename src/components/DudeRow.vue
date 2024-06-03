@@ -72,12 +72,20 @@ tr:first-child td {
 
 tr.sleeping td {
   font-size:65%;
+  opacity: 0.5;
 }
 tr.sleeping td input {
   font-size: 100%;
 }
 td.icon {
   text-align: center;
+}
+
+table tr.sleeping td {
+  border-bottom: dashed 1px var(--color-border);
+}
+table tr:last-child.sleeping td {
+  border-bottom: none;
 }
 
 </style>
