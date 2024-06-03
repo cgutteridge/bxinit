@@ -12,9 +12,9 @@ export default function initialiseStores (): void {
     setState(fromCookie)
   }
   if (dudeStore.all().length == 0) {
-    dudeStore.add('Bruh', 15, 0, true, true)
-    dudeStore.add('Tufty', 10, 1, true, true)
-    dudeStore.add('Enemies', 12, -2, false, true)
+    dudeStore.add('Bruh', 15, 0, true, true, false)
+    dudeStore.add('Tufty', 10, 1, true, true, false)
+    dudeStore.add('Enemies', 12, -2, false, true,  false)
   }
 
 }

@@ -13,7 +13,7 @@ export const getRoundStore = defineStore('round', () => {
 
   function roll () {
     initRolls.value = {}
-    dudeStore.all().forEach((dude: Dude) => {
+    dudeStore.all().filter(dude=>!dude.sleeping).forEach((dude: Dude) => {
       setRoll(dude.id, dude.autoRoll ? Math.floor(Math.random() * optionStore.diceSize) + 1 : undefined)
     })
   }
@@ -26,14 +26,18 @@ export const getRoundStore = defineStore('round', () => {
     initRolls.value[id] = roll
   }
 
+  function compareDudes (a: DudeInRound, b: DudeInRound): number {
+    return (b.init ?? 0) - (a.init ?? 0)
+  }
+
   // returns everyone in the round, sorted by roll
-  function all (): DudeInRound[] {
+  function fighting (): DudeInRound[] {
     const dudesInRounds: DudeInRound[] = dudeStore.all().map((dude): DudeInRound => {
       const roll: number | undefined = initRolls.value[dude.id]
       let init = roll
       if (init !== undefined) { init += dude.initModifier }
       return { dude, init, roll, firstInGroup: false, lastInGroup: false }
-    }).sort((a, b) => (b.init ?? 0) - (a.init ?? 0))
+    }).filter((dudeInRound: DudeInRound): boolean => !dudeInRound.dude.sleeping).sort(compareDudes)
     dudesInRounds.forEach((dudeInRound: DudeInRound, index) => {
       if (index < dudesInRounds.length - 1 && dudesInRounds[index + 1].init != dudeInRound.init) {
         dudeInRound.lastInGroup = true
@@ -43,5 +47,11 @@ export const getRoundStore = defineStore('round', () => {
     return dudesInRounds
   }
 
-  return { roll, all, initRolls, getRoll, setRoll }
+  function sleeping (): DudeInRound[] {
+    return dudeStore.all().map((dude): DudeInRound => {
+      return { dude, init:undefined, roll:undefined, firstInGroup: false, lastInGroup: false }
+    }).filter((dudeInRound: DudeInRound): boolean => dudeInRound.dude.sleeping)
+  }
+
+  return { roll, fighting, sleeping, initRolls, getRoll, setRoll }
 })

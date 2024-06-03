@@ -1,30 +1,33 @@
 <script setup lang="ts">
-import DiceFace from '@/components/DiceD6.vue'
 import DudeName from '@/components/DudeName.vue'
 import DudeAc from '@/components/DudeAc.vue'
 import DudeMod from '@/components/DudeMod.vue'
 import DudeFriend from '@/components/DudeFriend.vue'
 import DudeAuto from '@/components/DudeAuto.vue'
 import DudeRoll from '@/components/DudeRoll.vue'
+import DudeSleeping from '@/components/DudeSleeping.vue'
 
 defineProps(['dudeInRound'])
 defineEmits(['remove-dude'])
 </script>
 
 <template>
-  <tr v-bind:class="dudeInRound.lastInGroup?'last-in-group':''">
+  <tr v-bind:class="(dudeInRound.lastInGroup?'last-in-group':'')+' '+(dudeInRound.dude.sleeping?'sleeping':'')">
     <td style="text-align: right; min-width: 3em">{{ dudeInRound.init }}</td>
-    <td>
+    <td class="icon">
+      <DudeSleeping v-bind:id="dudeInRound.dude.id"></DudeSleeping>
+    </td>
+    <td class="icon">
       <DudeFriend v-bind:id="dudeInRound.dude.id"></DudeFriend>
     </td>
     <td>
       <DudeName v-bind:id="dudeInRound.dude.id"></DudeName>
     </td>
-    <td>
+    <td class="icon">
       <DudeAuto v-bind:id="dudeInRound.dude.id"></DudeAuto>
     </td>
-    <td>
-      <DudeRoll v-bind:id="dudeInRound.dude.id"></DudeRoll>
+    <td class="icon">
+      <DudeRoll v-if="!dudeInRound.dude.sleeping" v-bind:id="dudeInRound.dude.id"></DudeRoll>
     </td>
     <td>
       <DudeMod v-bind:id="dudeInRound.dude.id"></DudeMod>
@@ -65,6 +68,16 @@ tr.last-in-group td {
 
 tr:first-child td {
   border-top: dashed 2px var(--color-border);
+}
+
+tr.sleeping td {
+  font-size:65%;
+}
+tr.sleeping td input {
+  font-size: 100%;
+}
+td.icon {
+  text-align: center;
 }
 
 </style>

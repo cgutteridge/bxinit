@@ -36,7 +36,7 @@ function removeHostiles () {
 async function reScale () {
   await nextTick()
   const container = $('.bottom')
-  const scaledThing = $('.table')
+  const scaledThing = $('.bottom-content')
   const targetH: number = (container.height() ?? 0) * 0.95
   const targetW: number = (container.width() ?? 0) * 0.95
   const h: number = scaledThing.height() ?? 0
@@ -61,8 +61,8 @@ onMounted(() => {
       <button @click="add()" title="ADD COMBATANT">✚</button>
     </div>
     <div class="top-middle">
-      <button @click="removeHostiles()" title="REMOVE HOSTILES">❌⚔</button>
-      <button @click="removeFriendlies()" title="REMOVE FRIENDS">❌🛡</button>
+      <button @click="removeHostiles()" title="REMOVE HOSTILES">❌ 👿</button>
+      <button @click="removeFriendlies()" title="REMOVE FRIENDS">❌ 🛡</button>
     </div>
     <div class="top-right">
       <button v-if="optionStore.diceSize==20" @click="optionStore.diceSize=6" title="TOGGLE DICE SIZE">D20</button>
@@ -74,10 +74,18 @@ onMounted(() => {
     </div>
   </div>
   <div class="bottom">
-    <table class="table">
-      <dude-row v-for="dudeInRound in getRoundStore().all()" v-bind:dude-in-round="dudeInRound"
-                v-bind:key="dudeInRound.dude.id" v-on:remove-dude="remove($event)"></dude-row>
-    </table>
+    <div class="bottom-content">
+      <table>
+        <dude-row v-for="dudeInRound in getRoundStore().fighting()" v-bind:dude-in-round="dudeInRound"
+                  v-bind:key="dudeInRound.dude.id" v-on:remove-dude="remove($event)"></dude-row>
+        <template v-if="getRoundStore().sleeping().length">
+          <tr><td style="height:3em">&nbsp;</td></tr>
+          <dude-row v-for="dudeInRound in getRoundStore().sleeping()" v-bind:dude-in-round="dudeInRound"
+                    v-bind:key="dudeInRound.dude.id" v-on:remove-dude="remove($event)"></dude-row>
+        </template>
+      </table>
+
+    </div>
   </div>
 </template>
 
@@ -131,13 +139,14 @@ onMounted(() => {
   height: 90vh;
 }
 
-
-.table {
+.bottom-content {
   display: inline-block;
-  border-collapse: collapse;
   transition: transform 0.5s;
 }
 
+table {
+  border-collapse: collapse;
+}
 
 th {
   text-align: left

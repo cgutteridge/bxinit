@@ -28,12 +28,12 @@ export const getDudeStore = defineStore('dude', () => {
 
   // creates a blank new fighter and returns its ID
   function addBlank (): number {
-    return add('', undefined, 0, false, true)
+    return add('', undefined, 0, false, true, false)
   }
 
-  function add (name: string, ac: number | undefined, initModifier: number, friendly: boolean, autoRoll: boolean) {
+  function add (name: string, ac: number | undefined, initModifier: number, friendly: boolean, autoRoll: boolean, sleeping: boolean) {
     const id = nextId++
-    dudes.value[id] = { id, name, ac, initModifier, friendly, autoRoll }
+    dudes.value[id] = { id, name, ac, initModifier, friendly, autoRoll, sleeping }
     return id
   }
 
@@ -54,11 +54,11 @@ export const getDudeStore = defineStore('dude', () => {
   }
 
   function removeFriendlies () {
-    all().filter( dude=>dude.friendly).forEach( dude=>remove(dude.id))
+    all().filter( dude=>dude.friendly && !dude.sleeping).forEach( dude=>remove(dude.id))
   }
 
   function removeHostiles () {
-    all().filter( dude=>!dude.friendly).forEach( dude=>remove(dude.id))
+    all().filter( dude=>!dude.friendly && !dude.sleeping).forEach( dude=>remove(dude.id))
   }
 
   return {

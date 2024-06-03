@@ -5,4 +5,5 @@ export interface Dude {
   ac?: number
   friendly: boolean
   autoRoll: boolean
+  sleeping: boolean
 }

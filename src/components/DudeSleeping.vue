@@ -9,8 +9,8 @@ const dude = computed(() => dudeStore.get(props.id))
 
 <template>
   <div>
-    <div class="emoji" v-if="dude.friendly" @click="dude.friendly=false">🛡️</div>
-    <div class="emoji" v-if="!dude.friendly" @click="dude.friendly=true">👿️</div>
+    <div class="emoji" v-if="dude.sleeping" @click="dude.sleeping=false">💤️</div>
+    <div class="emoji" v-if="!dude.sleeping" @click="dude.sleeping=true">️⚔️</div>
   </div>
 </template>
 
