@@ -47,15 +47,15 @@
 }
 
 input {
-    transition:  background-color 0.5s;
+    transition: background-color 0.5s;
 }
+
 body {
     margin: 0;
     min-height: 100vh;
     color: var(--color-text);
     background: var(--color-background);
-    transition: color 0.5s,
-    background-color 0.5s;
+    transition: color 0.5s, background-color 0.5s;
     font-family: Inter,
     -apple-system,
     BlinkMacSystemFont,
@@ -73,6 +73,7 @@ body {
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
 }
+
 body.dark {
     --color-background: var(--vt-c-black);
     --color-background-soft: var(--vt-c-black-soft);
