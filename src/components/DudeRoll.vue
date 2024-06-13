@@ -18,7 +18,7 @@ const dude = computed(() => dudeStore.get(props.id))
 const roll = computed(() => roundStore.getRoll(props.id))
 let showing: Ref<number | undefined> = ref(roundStore.getRoll(props.id))
 let lastClick: number
-const BOUNCE_FACTOR = 500
+const BOUNCE_FACTOR = 2000
 
 function inc () {
 

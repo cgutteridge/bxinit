@@ -65,8 +65,8 @@ onMounted(() => {
       <button @click="removeFriendlies()" title="REMOVE FRIENDS">❌ 🛡</button>
     </div>
     <div class="top-right">
-      <button v-if="optionStore.diceSize==20" @click="optionStore.diceSize=6" title="TOGGLE DICE SIZE">D20</button>
-      <button v-if="optionStore.diceSize==6" @click="optionStore.diceSize=20" title="TOGGLE DICE SIZE">D6</button>
+      <button v-if="optionStore.diceSize==20" @click="optionStore.diceSize=6;reScale()" title="TOGGLE DICE SIZE">D20</button>
+      <button v-if="optionStore.diceSize==6" @click="optionStore.diceSize=20;reScale()" title="TOGGLE DICE SIZE">D6</button>
       <button v-if="optionStore.darkMode" @click="optionStore.setLight()" title="LIGHT MODE"
               style="background-color:#000">🌙
       </button>
