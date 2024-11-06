@@ -1,9 +1,9 @@
 const name = 'dudes'
-const days: number = 24 * 60 * 60 * 365 * 10
+const oneDay: number = 24 * 60 * 60 * 1000;
 
 export function setCookie (value: object) {
   const date = new Date()
-  date.setTime(date.getTime() + (days * 24 * 60 * 60 * 1000))
+  date.setTime(date.getTime() + oneDay * 365 * 30 ) // 30 years from now
   const expires = 'expires=' + date.toUTCString()
   const jsonValue = JSON.stringify(value)
   document.cookie = `${name}=${jsonValue};${expires};path=/;SameSite=Strict`
