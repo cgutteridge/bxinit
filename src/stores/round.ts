@@ -26,8 +26,9 @@ export const getRoundStore = defineStore('round', () => {
     initRolls.value[id] = roll
   }
 
+  // sort by initiative. If initiatives are the same, use roll as a tie-breaker
   function compareDudes (a: DudeInRound, b: DudeInRound): number {
-    return (b.init ?? 0) - (a.init ?? 0)
+    return (b.init ?? 0)*100 - (a.init ?? 0)*100 + (b.roll ?? 0) - (a.roll ?? 0)
   }
 
   // returns everyone in the round, sorted by roll
